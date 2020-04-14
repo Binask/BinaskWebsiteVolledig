@@ -130,7 +130,7 @@ session_start();
             </form>
           </div>
     </div>
-    <div class='head'>
+    <form action="Login.php" method="POST" class='head'>
     <h1 class='tekst'>Inloggen</h1>
       <hr>
       <label class='labels' for="email"><b>Email:</b></label>
@@ -147,6 +147,7 @@ session_start();
       <br>
       <br>
       <button class='labels' name="login" type="submit" class="signupbtn">Inloggen</button>
+    </form>
         </div>
 </body>
 <?
@@ -168,11 +169,13 @@ function login()
 
 
 
+
+
     if (isset($_POST['email'])) {
-        $email = test_input($_POST['email']);
+        $email = $_POST['email'];
     }
     if (isset($_POST['password'])) {
-        $password1 = test_input($_POST['psw']);
+        $password1 = $_POST['psw'];
     }
 
     $numberquery = "SELECT code FROM users WHERE email = '$email'";
@@ -190,14 +193,14 @@ function login()
 
 
     $rows = mysqli_num_rows($result);
-    if ($rows == 1)
+    if ($rows != 0)
     {
         $_SESSION["email"] = "$email";
         $_SESSION["code"] = "$code";
         header('Location: http://student.local/account.php');
     }
     else {
-        echo "Verkeerde gebruikersnaam en/of wachtwoord";
+        echo "Verkeerde email en/of wachtwoord";
     }
 
 

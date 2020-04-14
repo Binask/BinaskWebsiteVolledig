@@ -134,6 +134,7 @@ session_start();
     <div class='head'>
     <h1 class='tekst'>Registratie</h1>
     <br>
+        <form action="Registratie.php" method="POST">
       <p class='tekst'>Vul hier uw gegevens in om een account aan te maken.</p>
       <hr>
       <label class='labels' for="email"><b>Email:</b></label>
@@ -153,7 +154,8 @@ session_start();
       <br>
       <br>
       <button class='labels' type="submit" class="signupbtn" name="register">Registreren</button>
-        </div>
+        </form>
+    </div>
 </body>
 <?php
 if(array_key_exists('register', $_POST)) {
@@ -195,19 +197,18 @@ function register()
     if ($password1 != $passwordconfirm) {
         echo "Wachtwoorden zijn niet hetzelfde";
     }
-    elseif (strpos($email, '@student.nhlstenden.com') == false || strpos($email, '@nhlstenden.com') == false )
+    elseif (strpos($email, '@student.nhlstenden.com') == false && strpos($email, '@nhlstenden.com') == false )
     {
         echo "Registreer alstublieft met een NHL-Stenden emailadres";
     }
     else {
-        $passwordhash = password_hash($password1);
         $registerquery = $dbc->prepare("INSERT INTO users (email, password) VALUES (?, ?)");
-        $registerquery->bind_param("ss", $email, $passwordhash);
+        $registerquery->bind_param("ss", $email, $password1);
         if ($registerquery->execute() == true) {
             $registerquery->execute();
             echo "Registeren gelukt!";
         } else {
-            echo "Gebruikersnaam bestaat al";
+            echo "Account bestaat al";
         }
     }
     $dbc->close();
