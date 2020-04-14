@@ -1,0 +1,73 @@
+/* Style the navigation menu */
+.topnav {
+  overflow: hidden;
+  background-color: #ababab;
+  position: relative;
+}
+
+/* Hide the links inside the navigation menu (except for logo/home) */
+.topnav #hamburgerItems {
+  display: none;
+}
+
+/* Style navigation menu links */
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+/* Style the hamburger menu */
+.topnav a.icon {
+  background: #c4c4c4;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Style the active link (or home/logo) */
+.active {
+  background-color: #c4c4c4;
+  color: white;
+  position: relative;
+  left: 0;
+}
+
+/* Zoekveld stijlen */
+input {
+  background-color: #c4c4c4;
+  width: 40%;
+  padding: 6px;
+  border: 3px;
+  margin-top: 8px;
+  font-size: 17px;
+}
+
+#brand {
+  padding-left: 70px;
+}
+
+#recentrechthoek {
+  float: right;
+  background-color: #c4c4c4;
+  height: 500px;
+  width: 450px;
+  padding: 10px;
+}
+
+#zoekdiv {
+  width: 80%;
+  text-align: center;
+}
+
+#zoekdiv button {
+  padding: 6px 10px;
+  margin-top: 8px;
+  background: #dedede;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
